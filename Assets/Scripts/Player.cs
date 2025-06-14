@@ -62,7 +62,7 @@ public class Player : MonoBehaviour
     {
       transform.position = new Vector3(-11, transform.position.y, 0);
     }
-    else if (transform.position.x <= -11)
+    else if (transform.position.x < -11)
     {
       transform.position = new Vector3(11, transform.position.y, 0);
     }
