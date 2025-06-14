@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
-    transform.Translate(new Vector3(1, 0, 0));
+    // 1 meter * 5 * real time = 5 meters negative x axis per second
+    transform.Translate(new Vector3(-1, 0, 0) * 5 * Time.deltaTime);
   }
 }
