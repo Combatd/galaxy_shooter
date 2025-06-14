@@ -11,6 +11,14 @@ This script is going to be attached to the player and behave as the player.
 */
 public class Player : MonoBehaviour
 {
+  // public or private Reference?
+  // Data type? (int, bool, float, string)
+  // Every variable has a name
+  // Optional value assigned
+  [SerializeField]
+  private float speed = 1.5f;
+
+
   // Start is called once before the first execution of Update after the MonoBehaviour is created
   void Start()
   {
@@ -25,6 +33,6 @@ public class Player : MonoBehaviour
   void Update()
   {
     // 1 meter * 5 * real time = 5 meters negative x axis per second
-    transform.Translate(new Vector3(-1, 0, 0) * 5 * Time.deltaTime);
+    transform.Translate(new Vector3(-1, 0, 0) * speed * Time.deltaTime);
   }
 }
