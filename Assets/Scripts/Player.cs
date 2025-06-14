@@ -26,11 +26,16 @@ public class Player : MonoBehaviour
     // A Vector3 defines all psoitions in Unity. (X, Y, Z)
     // Vector3 has a set and a get method. You are almost always going to be setting a new Vector3 object
     transform.position = new Vector3(0, 0, 0);
-    
+
   }
 
   // Update is called once per frame
   void Update()
+  {
+    CalculateMovement();
+  }
+  
+  void CalculateMovement()
   {
     float horizontalInput = Input.GetAxis("Horizontal");
     float verticalInput = Input.GetAxis("Vertical");
@@ -39,11 +44,8 @@ public class Player : MonoBehaviour
 
     transform.Translate(direction * _speed * Time.deltaTime);
 
-    // if player position on the y is greater than 0
-    // y position = 0
-    // if player position on the y is less than -3.8
-    // y position = -3.8
-
+    // limits for vertical axis
+    // transformposition = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, -3.8f, 0), 0);
     if (transform.position.y >= 0)
     {
       transform.position = new Vector3(transform.position.x, 0, 0);
@@ -53,11 +55,8 @@ public class Player : MonoBehaviour
       transform.position = new Vector3(transform.position.x, -3.8f, 0);
     }
 
-    // if player position on the x is greater than 11
-    // x position = -11
-    // else if player position on the x is less than -11
-    // x position = 11
 
+    // limits for horizontal axis
     if (transform.position.x > 11)
     {
       transform.position = new Vector3(-11, transform.position.y, 0);
@@ -66,6 +65,5 @@ public class Player : MonoBehaviour
     {
       transform.position = new Vector3(11, transform.position.y, 0);
     }
-
   }
 }
