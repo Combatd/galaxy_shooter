@@ -39,22 +39,12 @@ public class Player : MonoBehaviour
   void Update()
   {
     CalculateMovement();
-
-    // if I hit the space key
-    // spawn a laser
-    // The Instantiate() method creates a new instance of a prefab at a specified position and rotation.
     if (Input.GetKeyDown(KeyCode.Space) && Time.time > _canFire)
     {
-      _canFire = Time.time + _fireRate;
-
-      // Take cube position and set laser to y of 0.8
-      Vector3 laserOrigin = new Vector3(transform.position.x, transform.position.y + 0.8f, 0);
-
-      // Quaternion.identity means no rotation
-      Instantiate(_laserPrefab, laserOrigin, Quaternion.identity);
+      FireLaser();
     }
   }
-  
+
   void CalculateMovement()
   {
     float horizontalInput = Input.GetAxis("Horizontal");
@@ -85,5 +75,19 @@ public class Player : MonoBehaviour
     {
       transform.position = new Vector3(11, transform.position.y, 0);
     }
+  }
+
+  void FireLaser()
+  {
+    // if I hit the space key
+    // spawn a laser
+    // The Instantiate() method creates a new instance of a prefab at a specified position and rotation.
+    _canFire = Time.time + _fireRate;
+
+    // Take cube position and set laser to y of 0.8
+    Vector3 laserOrigin = new Vector3(transform.position.x, transform.position.y + 0.8f, 0);
+
+    // Quaternion.identity means no rotation
+    Instantiate(_laserPrefab, laserOrigin, Quaternion.identity);
   }
 }
