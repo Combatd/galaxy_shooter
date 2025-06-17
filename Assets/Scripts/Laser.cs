@@ -30,7 +30,7 @@ public class Laser : MonoBehaviour
         Destroy(transform.parent.gameObject);
       }
       // destroy the laser
-      Destroy(gameObject);
+      Destroy(this.gameObject);
     }
 
     destroyTime();
@@ -39,6 +39,6 @@ public class Laser : MonoBehaviour
   void destroyTime()
   {
     // destroy the laser after some time
-    Destroy(gameObject, _time);
+    Destroy(this.gameObject, _time);
   }
 }
