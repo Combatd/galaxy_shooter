@@ -41,8 +41,11 @@ public class Player : MonoBehaviour
     // The Instantiate() method creates a new instance of a prefab at a specified position and rotation.
     if (Input.GetKeyDown(KeyCode.Space))
     {
+      // Take cube position and set laser to y of 0.8
+      Vector3 laserOrigin = new Vector3(transform.position.x, transform.position.y + 0.8f, 0);
+
       // Quaternion.identity means no rotation
-        Instantiate(_laserPrefab, transform.position, Quaternion.identity);
+      Instantiate(_laserPrefab, laserOrigin, Quaternion.identity);
     }
   }
   
