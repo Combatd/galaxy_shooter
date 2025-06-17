@@ -17,6 +17,8 @@ public class Player : MonoBehaviour
   // Optional value assigned
   [SerializeField]
   private float _speed = 1.5f;
+  [SerializeField]
+  private GameObject _laserPrefab;
 
 
   // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -33,6 +35,15 @@ public class Player : MonoBehaviour
   void Update()
   {
     CalculateMovement();
+
+    // if I hit the space key
+    // spawn a laser
+    // The Instantiate() method creates a new instance of a prefab at a specified position and rotation.
+    if (Input.GetKeyDown(KeyCode.Space))
+    {
+      // Quaternion.identity means no rotation
+        Instantiate(_laserPrefab, transform.position, Quaternion.identity);
+    }
   }
   
   void CalculateMovement()
